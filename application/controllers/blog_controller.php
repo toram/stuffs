@@ -18,7 +18,7 @@ class Blog_Controller extends CI_Controller {
 	{		
 		$data['brand'] = wurfl_get_brand();
 		$data['model'] = wurfl_get_model();
-		$data['qry']=$this->blog_model->get_all_posts();
+		$data['qry']=$this->blog_model->get_visible_posts();
 		$this->load->view("blog/index", $data);
 	}
 
@@ -27,10 +27,13 @@ class Blog_Controller extends CI_Controller {
 		$this->load->library("form_validation");
 		$this->form_validation->set_rules("title", "Titulo", "required|xss_clean");
 		$this->form_validation->set_rules("contenido", "Contenido", "required|xss_clean");
-
+		
+		$data['brand'] = wurfl_get_brand();
+		$data['model'] = wurfl_get_model();
+		
 		if ($this->form_validation->run() == FALSE)
 		{
-			$this->load->view("blog/add_post");	
+			$this->load->view("blog/add_post", $data);	
 		}
 		else
 		{
@@ -38,7 +41,7 @@ class Blog_Controller extends CI_Controller {
 			$contenido = $this->input->post('contenido');
 
 			$this->blog_model->add_post($title, $contenido);
-			$this->load->view('blog/posted');
+			$this->load->view('blog/posted', $data);
 		}	
 	}
 

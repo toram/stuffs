@@ -39,6 +39,14 @@
 */
 $route['blog'] = "blog_controller";
 $route['blog/(:any)'] = "blog_controller/$1";
+
+$route['login'] = "login_controller";
+$route['verifylogin'] = "verifylogin_controller";
+
+$route['admin'] = "admin_controller";
+$route['admin/(:any)'] = "admin_controller/$1";
+
+
 $route['default_controller'] = "blog_controller";
 $route['404_override'] = '';
 

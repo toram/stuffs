@@ -32,6 +32,7 @@
         <nav class="blog-nav">
           <a class="blog-nav-item active" href="<?=base_url()?>blog/index">Home</a>          
           <a class="blog-nav-item" href="<?=base_url()?>blog/add_post">Añadir post</a>
+          <a class="blog-nav-item" href="<?=base_url()?>login">Admin</a>
         </nav>
       </div>
     </div>
